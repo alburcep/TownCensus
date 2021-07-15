@@ -15,6 +15,7 @@ export const searchTexts = {
   hair: 'Search by hair color',
   ageMin: 'Gnomes minimum age',
   heightMin: 'Gnomes minimum height',
+  weightMin: 'Gnomes minimum weight',
   professions: 'Gnomes professions',
 
 }
