@@ -12,12 +12,12 @@ Adventurers can search in real time for gnomes. They don't even have to press a 
 https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json
 
 ## Install proyect & run proyect
-```Javascript npm install ```
-```Javascript npm start ```
+- npm install 
+- npm start 
 
 ## Folders:
 - /api -> All feching goes here
-- /componets -> Every component it's in a diferent folder with their own .css & testing
+- /componets -> Every component it's in a diferent folder with their own .css
 - /constants -> All text goes here
 - App.js -> Works as Home. It's a small app so no pages or React Router yet 
 
