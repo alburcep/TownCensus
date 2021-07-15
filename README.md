@@ -5,8 +5,19 @@ Axios for fetching the JSON data and Lazy Loading for improving the images loadi
 - https://github.com/axios/axios
 - https://www.npmjs.com/package/react-lazy-load-image-component
 
+## Usage
+Adventurers can search in real time for gnomes. They don't even have to press a 'search' button.
+
+## API url
+https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json
+
+## Install proyect & run proyect
+```Javascript npm install ```
+```Javascript npm start ```
+
 ## Folders:
 - /api -> All feching goes here
 - /componets -> Every component it's in a diferent folder with their own .css & testing
 - /constants -> All text goes here
 - App.js -> Works as Home. It's a small app so no pages or React Router yet 
+

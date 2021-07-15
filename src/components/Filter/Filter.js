@@ -1,10 +1,12 @@
 import {useState} from "react";
 import PropTypes from 'prop-types';
-import People from '../People/People'
+import Card from '../Card/Card'
+import './Filter.css'
 
-const Search = ({
+const Filter = ({
     censusData,
-    cardTexts
+    cardTexts,
+    searchTexts
 }) => {
     
   //Obtaining Array values & sorting them
@@ -33,64 +35,69 @@ const Search = ({
   const handleProfessionChange = e => setSearchProfession(e.target.value);
   
   return (
-    <div>     
-      <span>{cardTexts.names} </span>
-      <input
-        placeholder={cardTexts.names}
-        value={searchName}
-        onChange={handleNameChange}
-        maxLength={25}
-      />  
-      <span> {cardTexts.ageMin} </span>
-      <input
-        placeholder='age'        
-        value={searchMinAge}
-        onChange={handleMinAgeChange}
-        type='number'
-        min='1'
-        max='400'       
-      />     
-      <span> {cardTexts.heightMin} </span>   
-      <input
-        placeholder='height'
-        value={searchHeight}
-        onChange={handleHeightChange}
-        maxLength={3}
-        type='number'
-        min='1'
-        max='999'  
-      />
-      <span> {cardTexts.weightMin} </span>     
-      <input
-        placeholder='weight'
-        value={searchWeight}
-        onChange={handleWeightChange}
-        maxLength={2}
-        type='number'
-        min='1'
-        max='99'  
-      />   
-      <span> {cardTexts.hair} </span>   
-      <select
-        onChange={handleHairChange}
-        aria-label="Filter by hair color"
-      >  
-        <option value=''>All hair colors</option>      
-        {allHairTypes.map((hairColor) =>{
-          return ( <option>{hairColor}</option> )
-        })};       
-      </select>
-      <span> {cardTexts.professions} </span>   
-      <select
-        onChange={handleProfessionChange}      
-      >        
-        <option value=''>All professions</option>      
-        {allProfessions.map((profe) =>{
-          return ( <option>{profe}</option> )
-        })};       
-      </select>            
-      
-      <People 
+    <>
+      <div className='search-wrapper'>        
+        <input
+          className='search-input'
+          placeholder={searchTexts.name}
+          value={searchName}
+          onChange={handleNameChange}
+          maxLength={25}
+        />            
+        <select
+          onChange={handleProfessionChange}      
+        >        
+          <option value=''>All professions</option>      
+          {allProfessions.map((profe, i) =>{
+            return ( <option key={i}>{profe}</option> )
+          })};       
+        </select> 
+        <select
+          onChange={handleHairChange}
+          aria-label="Filter by hair color"
+        >  
+          <option value=''>All hair colors</option>      
+          {allHairTypes.map((hairColor, i) =>{
+            return ( <option key={i}>{hairColor}</option> )
+          })};       
+        </select>      
+        <div>  
+          <span> {searchTexts.ageMin} </span>
+          <input
+            placeholder='age'        
+            value={searchMinAge}
+            onChange={handleMinAgeChange}
+            type='number'
+            min='1'
+            max='400'       
+          />
+       </div>       
+        <div>      
+          <span> {searchTexts.heightMin} </span>   
+          <input
+            placeholder='height'
+            value={searchHeight}
+            onChange={handleHeightChange}
+            maxLength={3}
+            type='number'
+            min='1'
+            max='999'  
+          />
+        </div>
+        <div>
+          <span> {searchTexts.weightMin} </span>     
+          <input
+            placeholder='weight'
+            value={searchWeight}
+            onChange={handleWeightChange}
+            maxLength={2}
+            type='number'
+            min='1'
+            max='99'  
+          /> 
+        </div>                      
+      </div>
+      <Card 
         censusData = { censusData}
         cardTexts = {cardTexts}
         searchName = {searchName}
@@ -100,13 +107,13 @@ const Search = ({
         searchHair = {searchHair}
         searchProfession = {searchProfession}
       />
-    </div>
+    </>
   )
 }
 
-Search.propTypes = {
+Filter.propTypes = {
   censusData: PropTypes.array.isRequired,
   cardTexts: PropTypes.object
 }
 
-export default Search
+export default Filter

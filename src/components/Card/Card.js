@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import './Card.css'
 
-const People = ({
+const Card = ({
   censusData,
   cardTexts,
   searchName,
@@ -12,26 +13,30 @@ const People = ({
   searchHair,
   searchProfession 
 }) => {
-  const resultsSearch = () => censusData.map(obj => {   
-    let cardData = 
-      <>
-        <LazyLoadImage      
-          effect="blur"         
-          src={obj.thumbnail} 
-          alt={obj.name} 
-          key={obj.id}       
-        />
+  const resultsSearch = censusData.map(obj => {   
+    let cardData = (    
+      <div className='card'>
+        <div className='card-image'>
+          <LazyLoadImage      
+            effect="blur"         
+            src={obj.thumbnail} 
+            alt={obj.name} 
+            key={obj.id}
+            height='150px'      
+            width='100%'
+          />
+        </div>
         <p>{`${cardTexts.cardName}: ${obj.name}`}</p>
         <p>{`${cardTexts.cardAge}: ${obj.age}`}</p>
         <p>{`${cardTexts.cardHairColor}: ${obj.hair_color}`}</p>
         <p>{`${cardTexts.cardWeight}: ${obj.weight.toFixed(2)}`}</p>
         <p>{`${cardTexts.cardHeight}: ${obj.height.toFixed(2)}`}</p>
         <p>{cardTexts.cardFriends}:</p>
-        <ul>{obj.friends.map((friends) => { return (<li>{friends}</li>) })}</ul>
+        <ul>{obj.friends.map((friends, i) => { return (<li key={i}>{friends}</li>) })}</ul>
         <p>{cardTexts.cardProfessions}: </p>
-        <ul>{obj.professions.map((prof) => { return ( <li>{prof}</li>) })}</ul>
-        <p>----------</p>
-      </>
+        <ul>{obj.professions.map((prof, i) => { return ( <li key={i}>{prof}</li>) })}</ul>
+      </div>
+    )      
     if(
       searchProfession === '' &&
       obj.name.toLowerCase().includes(searchName.toLowerCase()) &&        
@@ -49,16 +54,20 @@ const People = ({
       obj.hair_color.includes(searchHair)   
     ) { return <> {cardData} </> }     
   });
-
-  return (
-    <div> {resultsSearch()} </div>      
-  )
+ 
+  return <div className='card-grid'> {resultsSearch} </div>  
+ 
 }
 
-People.propTypes = {
+Card.propTypes = {
   censusData: PropTypes.array.isRequired,
-  cardTexts: PropTypes.object
+  cardTexts: PropTypes.object,
+  searchName: PropTypes.string,
+  searchHeight: PropTypes.string,
+  searchMinAge: PropTypes.string, 
+  searchWeight: PropTypes.string, 
+  searchHair: PropTypes.string,
+  searchProfession: PropTypes.string 
 }
 
-
-export default People
+export default Card

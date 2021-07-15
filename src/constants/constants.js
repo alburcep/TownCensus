@@ -11,11 +11,10 @@ export const headerTexts = {
   title: 'Brastlewark Census'
 }
 export const searchTexts = {    
-  names: 'Search by name',
+  name:'Find gnomes by name',
   hair: 'Search by hair color',
-  ageMin: 'Gnomes minimum age',
-  heightMin: 'Gnomes minimum height',
-  weightMin: 'Gnomes minimum weight',
+  ageMin: 'Min Age',
+  heightMin: 'Min Height',
+  weightMin: 'Min Weight',
   professions: 'Gnomes professions',
-
 }

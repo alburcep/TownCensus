@@ -1,6 +1,6 @@
 import './App.css';
 import FecthTownData from './api/FecthTownData';
-import {cardTexts, headerTexts} from './constants/constants'
+import {cardTexts, headerTexts, searchTexts} from './constants/constants'
 import Header from './components/Header/Header'
 import Filter from './components/Filter/Filter';
 
@@ -28,7 +28,8 @@ function App() {
       {loading ?
         <Filter
           censusData={townDataJSON}
-          cardTexts={cardTexts}
+          searchTexts={searchTexts}
+          cardTexts={cardTexts}        
         /> 
       : 'loading gnomes...'}     
     </div>
