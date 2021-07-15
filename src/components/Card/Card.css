@@ -1,0 +1,12 @@
+.card{
+  width: 100%;
+  border-radius: 0.5rem;
+  background-color: peru;
+  display: inline-flex; 
+  margin: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.295) 0px 0px 10px ;
+}
+.card img{
+  height: 175px;
+  width: 175px;
+}
